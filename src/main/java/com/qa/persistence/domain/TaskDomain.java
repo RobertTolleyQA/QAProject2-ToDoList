@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -28,6 +29,9 @@ public class TaskDomain {
 	private Double estCost;
 	
 	private Integer estWorkers;
+	
+	@ManyToOne
+	private DepartmentDomain myDepartment;
 
 	public TaskDomain(Long id, @NotNull String name, String desc, Double estCost, Integer estWorkers) {
 		super();
