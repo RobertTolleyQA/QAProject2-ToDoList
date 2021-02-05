@@ -21,8 +21,6 @@ public class DepartmentDTO {
 	
 	private String name;
 	
-	@OneToMany(mappedBy = "myDepartment", fetch= FetchType.EAGER)
-	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<TaskDomain> taskList;
 
 	public DepartmentDTO(Long id, String name, List<TaskDomain> taskList) {

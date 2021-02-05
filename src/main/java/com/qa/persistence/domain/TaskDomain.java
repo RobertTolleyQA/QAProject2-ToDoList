@@ -33,13 +33,16 @@ public class TaskDomain {
 	@ManyToOne
 	private DepartmentDomain myDepartment;
 
-	public TaskDomain(Long id, @NotNull String name, String desc, Double estCost, Integer estWorkers) {
+
+	public TaskDomain(Long id, String name, String desc, Double estCost, Integer estWorkers,
+			DepartmentDomain myDepartment) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.desc = desc;
 		this.estCost = estCost;
 		this.estWorkers = estWorkers;
+		this.myDepartment = myDepartment;
 	}
 
 	public TaskDomain() {
