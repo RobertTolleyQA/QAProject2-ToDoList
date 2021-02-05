@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class TaskDomain {
 	
@@ -31,7 +33,10 @@ public class TaskDomain {
 	private Integer estWorkers;
 	
 	@ManyToOne
+	@NotNull
 	private DepartmentDomain myDepartment;
+
+
 
 
 	public TaskDomain(Long id, String name, String desc, Double estCost, Integer estWorkers,
@@ -44,6 +49,19 @@ public class TaskDomain {
 		this.estWorkers = estWorkers;
 		this.myDepartment = myDepartment;
 	}
+	
+	
+
+	public TaskDomain(String name, String desc, Double estCost, Integer estWorkers, DepartmentDomain myDepartment) {
+		super();
+		this.name = name;
+		this.desc = desc;
+		this.estCost = estCost;
+		this.estWorkers = estWorkers;
+		this.myDepartment = myDepartment;
+	}
+
+
 
 	public TaskDomain() {
 		super();
@@ -88,6 +106,15 @@ public class TaskDomain {
 	public void setEstWorkers(Integer estWorkers) {
 		this.estWorkers = estWorkers;
 	}
+
+	public DepartmentDomain getMyDepartment() {
+		return myDepartment;
+	}
+
+	public void setMyDepartment(DepartmentDomain myDepartment) {
+		this.myDepartment = myDepartment;
+	}
+	
 	
 	
 	

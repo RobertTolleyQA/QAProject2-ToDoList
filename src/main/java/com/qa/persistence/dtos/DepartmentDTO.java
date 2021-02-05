@@ -2,16 +2,10 @@ package com.qa.persistence.dtos;
 
 import java.util.List;
 
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import com.qa.persistence.domain.TaskDomain;
 
 public class DepartmentDTO {
 	
@@ -21,9 +15,9 @@ public class DepartmentDTO {
 	
 	private String name;
 	
-	private List<TaskDomain> taskList;
+	private List<TaskDTO> taskList;
 
-	public DepartmentDTO(Long id, String name, List<TaskDomain> taskList) {
+	public DepartmentDTO(Long id, String name, List<TaskDTO> taskList) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -50,11 +44,11 @@ public class DepartmentDTO {
 		this.name = name;
 	}
 
-	public List<TaskDomain> getTaskList() {
+	public List<TaskDTO> getTaskList() {
 		return taskList;
 	}
 
-	public void setTaskList(List<TaskDomain> taskList) {
+	public void setTaskList(List<TaskDTO> taskList) {
 		this.taskList = taskList;
 	}
 
