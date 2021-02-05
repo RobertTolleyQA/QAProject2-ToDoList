@@ -1,5 +1,7 @@
 package com.qa.persistence.dtos;
 
+import java.util.Date;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,18 +18,37 @@ public class TaskDTO {
 	
 	private String desc;
 	
-	private Double estTime;
+//	Date date = new Date();
+//	private String currentDate = date.toString();
+	
+//	public String getDate() {
+//		return currentDate;
+//	}
+	
+	private Double estCost;
 	
 	private Integer estWorkers;
 
-	public TaskDTO(Long id, @NotNull String name, String desc, Double estTime, Integer estWorkers) {
+	public TaskDTO(Long id, String name, String desc, Double estCost, Integer estWorkers) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.desc = desc;
-		this.estTime = estTime;
+		this.estCost = estCost;
 		this.estWorkers = estWorkers;
 	}
+	
+	
+
+	public TaskDTO(String name, String desc, Double estCost, Integer estWorkers) {
+		super();
+		this.name = name;
+		this.desc = desc;
+		this.estCost = estCost;
+		this.estWorkers = estWorkers;
+	}
+
+
 
 	public TaskDTO() {
 		super();
@@ -57,12 +78,12 @@ public class TaskDTO {
 		this.desc = desc;
 	}
 
-	public Double getEstTime() {
-		return estTime;
+	public Double getEstCost() {
+		return estCost;
 	}
 
-	public void setEstTime(Double estTime) {
-		this.estTime = estTime;
+	public void setEstCost(Double estCost) {
+		this.estCost = estCost;
 	}
 
 	public Integer getEstWorkers() {
@@ -72,5 +93,14 @@ public class TaskDTO {
 	public void setEstWorkers(Integer estWorkers) {
 		this.estWorkers = estWorkers;
 	}
+	
+	
+	
+	
 
+
+	
+	
+	
 }
+

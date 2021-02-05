@@ -18,16 +18,23 @@ public class TaskDomain {
 	
 	private String desc;
 	
-	private Double estTime;
+//	Date date = new Date();
+//	private String currentDate = date.toString();
+	
+//	public String getDate() {
+//		return currentDate;
+//	}
+	
+	private Double estCost;
 	
 	private Integer estWorkers;
 
-	public TaskDomain(Long id, @NotNull String name, String desc, Double estTime, Integer estWorkers) {
+	public TaskDomain(Long id, @NotNull String name, String desc, Double estCost, Integer estWorkers) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.desc = desc;
-		this.estTime = estTime;
+		this.estCost = estCost;
 		this.estWorkers = estWorkers;
 	}
 
@@ -59,12 +66,12 @@ public class TaskDomain {
 		this.desc = desc;
 	}
 
-	public Double getEstTime() {
-		return estTime;
+	public Double getEstCost() {
+		return estCost;
 	}
 
-	public void setEstTime(Double estTime) {
-		this.estTime = estTime;
+	public void setEstCost(Double estCost) {
+		this.estCost = estCost;
 	}
 
 	public Integer getEstWorkers() {
