@@ -5,3 +5,10 @@ VALUES
 ('Managing', 'Overlook the project', 0.0, 1),
 ('Testing', 'Ensure no errors get through to final version', 800.45, 8),
 ('Coffee', 'Ensure everyone has coffee', 10.99, 1);
+
+INSERT INTO DEPARTMENT_DOMAIN(ADDRESS)
+VALUES
+('Front-End'),
+('Back-End'),
+('Managerial'),
+('Intern');
