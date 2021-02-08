@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -77,10 +78,16 @@ public class DepartmentServices {
 	@DeleteMapping("/delete/{id}")
 	public boolean delete(Long id) {
 
+		try {
 		this.repo.deleteById(id);
 		boolean exists = this.repo.existsById(id);
 
 		return !exists;
+		
+		}catch(EmptyResultDataAccessException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	

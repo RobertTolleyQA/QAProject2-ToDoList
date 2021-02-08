@@ -30,7 +30,6 @@ public class TaskDomain {
 	private Integer estWorkers;
 	
 	@ManyToOne
-	@NotNull
 	private DepartmentDomain myDepartment;
 
 
@@ -57,6 +56,8 @@ public class TaskDomain {
 		this.estWorkers = estWorkers;
 		this.myDepartment = myDepartment;
 	}
+	
+	
 
 
 
