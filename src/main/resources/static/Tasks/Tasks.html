@@ -47,12 +47,13 @@
     </nav>
     <!-- NAV BAR ABOVE -- BUTTONS BELOW  -->
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md">
                 <h1 class="text-center display-2">Tasks</h1>
             </div>
         </div>
+        <!-- CREATE BUTTON -->
         <div class="row">
             <div class="col">
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
@@ -61,6 +62,27 @@
                     </button>
             </div>
         </div>
+        <br/>
+        <!-- READ BUTTON -->
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                        data-target="#readMethod">
+                        Read
+                    </button>
+            </div>
+        </div>
+    <br/>
+        <!-- UPDATE BUTTON -->
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                        data-target="#updateMethod">
+                        Update
+                    </button>
+            </div>
+        </div>
+        
     </div>
 
     <!-- BUTTONS ABOVE -- MODALS BELOW -->
@@ -70,6 +92,69 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title">Create your task</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="mb-3 input-group">
+                            <input class="input-group-text" type="text" id="name" placeholder="Name" />
+                        </div>
+                        <div class="mb-3 input-group">
+                            <input class="input-group-text" type="number" name="price" id="price"
+                                placeholder="Cost">
+                        </div>
+                        <div class="mb-3 input-group">
+                            <input class="input-group-text" type="number" name="type" id="workers" placeholder="Workers">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Description</span>
+                            <textarea id="desc" class="form-control" aria-label="With textarea"></textarea>
+                          </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="createTask();" data-dismiss="modal">Create your flower</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Read Modal -->
+
+    <div class="modal fade" id="readMethod" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Here are all the tasks:</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <p id="allTasks">HERE</p>
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="readTask();" >READ ALL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UPDATE MODAL -->
+
+    <div class="modal fade" id="updateMethod" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Update your task here</h2>
                     <button type="button" class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
