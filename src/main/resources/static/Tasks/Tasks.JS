@@ -14,6 +14,10 @@ const createTask = () => {
     const taskWorker = taskworkers.value;
     const taskDesc = taskdesc.value;
 
+    if ( taskName == "" || taskCost == "" || taskWorker == "" || taskDesc == "" ) {
+        console.log("needs input");
+    } 
+    else {
     let data = {
         name: taskName,
         desc: taskDesc,
@@ -31,7 +35,7 @@ const createTask = () => {
         console.log(info);
     })
     .catch(err => console.error(`Stopppppp! ${err}`));
-}
+}}
 
 const printNameToScreen = (tasks) => {
     let task = document.createElement("div"); // <p> </p>
@@ -74,8 +78,13 @@ const printNameToScreen = (tasks) => {
         let cost = tasks.estCost;
         let workers = tasks.estWorkers;
 
-        let finalString = `ID: ${id} Tasks Title: ${name} Estimated Cost: ${cost} Estimated Workers: ${workers} Description: ${desc}`
+        let finalString = `ID: ${id} Tasks Title: ${name} Estimated Cost: £${cost} Estimated Workers: ${workers} Description: ${desc}`
         printNameToScreen(finalString);
+
+    }
+
+    const clearRead = () => {
+        document.getElementById("allTasks").innerHTML = "";
 
     }
     
