@@ -56,80 +56,75 @@
         <!-- CREATE BUTTON -->
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-                        data-target="#createMethod">
-                        Create
-                    </button>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createMethod">
+                    Create
+                </button>
             </div>
         </div>
-        <br/>
+        <br />
         <!-- READ BUTTON -->
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-                        data-target="#readMethod">
-                        Read
-                    </button>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#readMethod">
+                    Read
+                </button>
             </div>
         </div>
-    <br/>
+        <br />
         <!-- UPDATE BUTTON -->
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-                        data-target="#updateMethod">
-                        Update
-                    </button>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#updateMethod">
+                    Update
+                </button>
             </div>
         </div>
-        
+
     </div>
 
     <!-- BUTTONS ABOVE -- MODALS BELOW -->
 
-        <!-- CREATE MODAL -->
-            <div class="modal fade" id="createMethod" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title">Create your task</h2>
-                            <button type="button" class="close" data-dismiss="modal">
-                                <span>&times;</span>
-                            </button>
+    <!-- CREATE MODAL -->
+    <div class="modal fade" id="createMethod" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Create your task</h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="input-group">
+                        <div class="d-grid gap-8 d-md-block">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="name" placeholder="Task Name" required>
                         </div>
-                        <div class="modal-body">
-                            <form class="row g-3">
-                                <div class="col-md-4">
-                                  <input type="text" class="form-control" id="name" placeholder="Task Name" required>
-                                </div>
-                                <div class="col-md-4">
-                                  <input type="number" class="form-control" id="price" placeholder="Cost" step=".01" required>
-                                </div>
-                                <div class="col-md-4">
-                                  <div class="input-group">
-                                    <input type="number" class="form-control" id="workers" placeholder="Total Workers" required>
-                                  </div>
-                                </div>
-                                <div class="p-4">
-                                    <div class="input-group">
-                                        <span class="input-group-text">Description</span>
-                                        <textarea type="text" class="form-control" id="desc" rows="3" required></textarea>
-                                    </div>
-                                </div>
-                                    <div class="col-12">
-                                  <button class="btn btn-primary" type="sumbit" onclick="createTask()">Submit form</button>
-                                </div>
-                              </form>
-                        
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="price" placeholder="Cost" step=".01" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="workers" placeholder="Total Workers" required>
+                        </div>
+                        </div>
+                            <div class="input-group">
+                                <span class="input-group-text">Description</span>
+                                <textarea type="text" class="form-control" id="desc" rows="3" required></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="sumbit" onclick="createTask()">Create Task</button>
+                            </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Read Modal -->
-    
-    <div class="modal fade" data-bs-backdrop="static" id="readMethod" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+
+    <div class="modal fade" data-bs-backdrop="static" id="readMethod" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -141,55 +136,56 @@
                 <div class="modal-body">
                     <form>
                         <p id="allTasks">Press read me for all tasks...</p>
-                        
-                        
+
+
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="readTask();" >READ ALL</button>
+                    <button type="button" class="btn btn-success" onclick="readTask();">READ ALL</button>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- UPDATE MODAL -->
-    
-    <div class="modal fade" id="updateMethod" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+
+    <div class="modal fade" id="updateMethod" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title">Update your task here</h2>
+                    <h2 class="modal-title">Create your task</h2>
                     <button type="button" class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        
-                        <div class="mb-3 input-group">
-                            <input class="input-group-text" type="text" id="name" placeholder="Name" />
-                        </div>
-                        <div class="mb-3 input-group">
-                            <input class="input-group-text" type="number" name="price" id="price"
-                            placeholder="Cost">
-                        </div>
-                        <div class="mb-3 input-group">
-                            <input class="input-group-text" type="number" name="type" id="workers" placeholder="Workers">
+                    <form class="input-group">
+                        <div class="d-grid gap-8 d-md-block">
+                        <input type="text" class="form-control" id="name" placeholder="Task ID" required>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="name" placeholder="Task Name" required>
                         </div>
                         <div class="input-group">
-                            <span class="input-group-text">Description</span>
-                            <textarea id="desc" class="form-control" aria-label="With textarea"></textarea>
+                            <input type="number" class="form-control" id="price" placeholder="Cost" step=".01" required>
                         </div>
-                        
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="workers" placeholder="Total Workers" required>
+                        </div>
+                        </div>
+                            <div class="input-group">
+                                <span class="input-group-text">Description</span>
+                                <textarea type="text" class="form-control" id="desc" rows="3" required></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="sumbit" onclick="createTask()">Create Task</button>
+                            </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="createTask();" data-dismiss="modal">Create your flower</button>
                 </div>
             </div>
         </div>
     </div>
-    
+
 
 
 
