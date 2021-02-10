@@ -79,6 +79,15 @@
                 </button>
             </div>
         </div>
+        <br />
+        <!-- DELETE BUTTON -->
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#deleteMethod">
+                    Delete
+                </button>
+            </div>
+        </div>
 
     </div>
 
@@ -98,24 +107,27 @@
                 <div class="modal-body">
                     <form class="input-group">
                         <div class="d-grid gap-8 d-md-block">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="name" placeholder="Task Name" required>
-                        </div>
-                        <div class="input-group">
-                            <input type="number" class="form-control" id="price" placeholder="Cost" step=".01" required>
-                        </div>
-                        <div class="input-group">
-                            <input type="number" class="form-control" id="workers" placeholder="Total Workers" required>
-                        </div>
-                        </div>
                             <div class="input-group">
-                                <span class="input-group-text">Description</span>
-                                <textarea type="text" class="form-control" id="desc" rows="3" required></textarea>
+                                <input type="text" class="form-control" id="name" placeholder="Task Name" required>
                             </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="button" onclick="createTask()">Create Task</button>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="price" placeholder="Cost" step=".01"
+                                    required>
                             </div>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="workers" placeholder="Total Workers"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Description</span>
+                            <textarea type="text" class="form-control" id="desc" rows="3" required></textarea>
+                        </div>
                     </form>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" type="button" onclick="createTask()">Create Task</button>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -162,27 +174,62 @@
                 <div class="modal-body">
                     <form class="input-group">
                         <div class="d-grid gap-8 d-md-block">
-                        <input type="text" class="form-control" id="updateid" placeholder="Task ID" required>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="updatename" placeholder="Task Name" required>
-                        </div>
-                        <div class="input-group">
-                            <input type="number" class="form-control" id="updateprice" placeholder="Cost" step=".01" required>
-                        </div>
-                        <div class="input-group">
-                            <input type="number" class="form-control" id="updateworkers" placeholder="Total Workers" required>
-                        </div>
-                        </div>
+                            <input type="text" class="form-control" id="updateid" placeholder="Task ID" required>
                             <div class="input-group">
-                                <span class="input-group-text">Description</span>
-                                <textarea type="text" class="form-control" id="updatedesc" rows="3" required></textarea>
+                                <input type="text" class="form-control" id="updatename" placeholder="Task Name"
+                                    required>
                             </div>
-                                <button class="btn btn-primary" type="button" onclick="updateTask()">Create Task</button>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="updateprice" placeholder="Cost" step=".01"
+                                    required>
+                            </div>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="updateworkers" placeholder="Total Workers"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Description</span>
+                            <textarea type="text" class="form-control" id="updatedesc" rows="3" required></textarea>
+                        </div>
                     </form>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" type="button" onclick="updateTask()">Create Task</button>
                 </div>
+                
             </div>
         </div>
     </div>
+    </div>
+
+    <!-- DELETE MODAL -->
+
+    <div class="modal fade" id="deleteMethod" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Create your task</h2>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="input-group">
+                    <div class="d-grid gap-8 d-md-block">
+                        <input type="text" class="form-control" id="deleteid" placeholder="Task ID" required>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" onclick="deleteTask()">Delete Task</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</div>
+
+
 
 
 

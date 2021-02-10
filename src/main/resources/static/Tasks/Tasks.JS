@@ -1,17 +1,20 @@
 'use strict'
 
+// CREATE SELECTORS
 const listAll = document.querySelector("#allTasks");
 const taskid = document.querySelector("#id");
 const taskname = document.querySelector("#name");
 const taskcost = document.querySelector("#price");
 const taskworkers = document.querySelector("#workers");
 const taskdesc = document.querySelector("#desc");
-// const flowerid = document.querySelector("#id");
+// UPDATE SELECTORS
 const updatetaskid = document.querySelector("#updateid");
 const updatetaskname = document.querySelector("#updatename");
 const updatetaskcost = document.querySelector("#updateprice");
 const updatetaskworkers = document.querySelector("#updateworkers");
 const updatetaskdesc = document.querySelector("#updatedesc")
+// DELETE SELECTORS
+const deletetaskid = document.querySelector("#deleteid");
 
 // Task JSON to string
 
@@ -134,3 +137,25 @@ const updateTask = () => {
     }
 
 }
+
+const deleteTask = () => {
+
+        const taskID = deletetaskid.value;
+
+        fetch(`http://localhost:8080/tasks/delete/${taskID}`, {
+            
+                method: "DELETE" })
+        
+            .then((response) => {
+                // check that the response is OK (i.e. 200)
+                if (response.status !== 204) {
+                    throw new Error("I don't have a status of 204");
+                } else {
+                    console.log(response);
+                    console.log(`Task has been deleted`);
+                }
+            }).catch((err) => {
+                console.error(err);
+            })
+    }
+
