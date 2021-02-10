@@ -7,6 +7,7 @@ const taskname = document.querySelector("#name");
 const taskcost = document.querySelector("#price");
 const taskworkers = document.querySelector("#workers");
 const taskdesc = document.querySelector("#desc");
+const deptid = document.querySelector("#deptid");
 // UPDATE SELECTORS
 const updatetaskid = document.querySelector("#updateid");
 const updatetaskname = document.querySelector("#updatename");
@@ -52,8 +53,9 @@ const createTask = () => {
     const taskCost = taskcost.value;
     const taskWorker = taskworkers.value;
     const taskDesc = taskdesc.value;
+    const deptID = deptid.value;
 
-    if (taskName == "" || taskCost == "" || taskWorker == "" || taskDesc == "") {
+    if (taskName == "" || taskCost == "" || taskWorker == "" || taskDesc == "" || deptID == "") {
         console.log("needs input");
     }
     else {
@@ -61,7 +63,8 @@ const createTask = () => {
             name: taskName,
             desc: taskDesc,
             estCost: taskCost,
-            estWorkers: taskWorker
+            estWorkers: taskWorker,
+            myDepartment: {"id" : deptID}
         }
         console.log(data);
         fetch("http://localhost:8080/tasks/create", {
