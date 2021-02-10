@@ -1,11 +1,17 @@
 'use strict'
 
 const listAll = document.querySelector("#allTasks");
+const taskid = document.querySelector("#id");
 const taskname = document.querySelector("#name");
 const taskcost = document.querySelector("#price");
 const taskworkers = document.querySelector("#workers");
 const taskdesc = document.querySelector("#desc");
 // const flowerid = document.querySelector("#id");
+const updatetaskid = document.querySelector("#updateid");
+const updatetaskname = document.querySelector("#updatename");
+const updatetaskcost = document.querySelector("#updateprice");
+const updatetaskworkers = document.querySelector("#updateworkers");
+const updatetaskdesc = document.querySelector("#updatedesc")
 
 // Task JSON to string
 
@@ -84,7 +90,7 @@ const readTask = () => {
                 response.json().then((infofromserver) => {
                     console.log(infofromserver);
                     for (let tasks of infofromserver) {
-                        console.log(tasks.name);
+
                         jsonConverter(tasks);
                     }
                 })
@@ -92,4 +98,39 @@ const readTask = () => {
         }).catch((err) => {
             console.error(err);
         })
+}
+
+const updateTask = () => {
+
+    const taskID = updatetaskid.value;
+    const taskName = updatetaskname.value;
+    const taskCost = updatetaskcost.value;
+    const taskWorker = updatetaskworkers.value;
+    const taskDesc = updatetaskdesc.value;
+
+    if (taskID == "" || taskName == "" || taskCost == "" || taskWorker == "" || taskDesc == "") {
+        console.log("needs input");
+    }
+    else {
+        let data = {
+            name: taskName,
+            desc: taskDesc,
+            estCost: taskCost,
+            estWorkers: taskWorker
+        }
+        console.log(data);
+        fetch(`http://localhost:8080/tasks/update/${taskID}`, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(response => response.json())
+            .then(info => {
+                console.log(info);
+            })
+            .catch(err => console.error(`Stopppppp! ${err}`));
+
+
+    }
+
 }

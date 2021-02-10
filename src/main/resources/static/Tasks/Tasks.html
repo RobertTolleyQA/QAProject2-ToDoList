@@ -113,7 +113,7 @@
                                 <textarea type="text" class="form-control" id="desc" rows="3" required></textarea>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-primary" type="sumbit" onclick="createTask()">Create Task</button>
+                                <button class="btn btn-primary" type="button" onclick="createTask()">Create Task</button>
                             </div>
                     </form>
                 </div>
@@ -162,24 +162,22 @@
                 <div class="modal-body">
                     <form class="input-group">
                         <div class="d-grid gap-8 d-md-block">
-                        <input type="text" class="form-control" id="name" placeholder="Task ID" required>
+                        <input type="text" class="form-control" id="updateid" placeholder="Task ID" required>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="name" placeholder="Task Name" required>
+                            <input type="text" class="form-control" id="updatename" placeholder="Task Name" required>
                         </div>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="price" placeholder="Cost" step=".01" required>
+                            <input type="number" class="form-control" id="updateprice" placeholder="Cost" step=".01" required>
                         </div>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="workers" placeholder="Total Workers" required>
+                            <input type="number" class="form-control" id="updateworkers" placeholder="Total Workers" required>
                         </div>
                         </div>
                             <div class="input-group">
                                 <span class="input-group-text">Description</span>
-                                <textarea type="text" class="form-control" id="desc" rows="3" required></textarea>
+                                <textarea type="text" class="form-control" id="updatedesc" rows="3" required></textarea>
                             </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="sumbit" onclick="createTask()">Create Task</button>
-                            </div>
+                                <button class="btn btn-primary" type="button" onclick="updateTask()">Create Task</button>
                     </form>
                 </div>
             </div>
