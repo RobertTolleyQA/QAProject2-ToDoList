@@ -41,13 +41,6 @@ const jsonConverter = (dept) => {
     }
 }
 
-//  Clear previous read all
-
-const clearRead = () => {
-    document.getElementById("allTasks").innerHTML = "";
-
-}
-
 // Create <P> & add text
 
 const printNameToScreen = (tasks, heading) => {
