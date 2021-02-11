@@ -1,20 +1,26 @@
 'use strict'
 
 // CREATE SELECTORS
-const listAll = document.querySelector("#allTasks");
+const listAll = document.querySelector("#taskInsert");
 const taskid = document.querySelector("#id");
 const taskname = document.querySelector("#name");
 const taskcost = document.querySelector("#price");
 const taskworkers = document.querySelector("#workers");
 const taskdesc = document.querySelector("#desc");
+const deptid = document.querySelector("#deptid");
+const createalert = document.querySelector("#createonsuccess");
+// READ SELECTORS
+const readid = document.querySelector("#readoneid");
 // UPDATE SELECTORS
 const updatetaskid = document.querySelector("#updateid");
 const updatetaskname = document.querySelector("#updatename");
 const updatetaskcost = document.querySelector("#updateprice");
 const updatetaskworkers = document.querySelector("#updateworkers");
 const updatetaskdesc = document.querySelector("#updatedesc")
+const updatealert = document.querySelector("#updateonsuccess");
 // DELETE SELECTORS
 const deletetaskid = document.querySelector("#deleteid");
+const deletealert = document.querySelector("#deleteonsuccess");
 
 // Task JSON to string
 
@@ -52,16 +58,25 @@ const createTask = () => {
     const taskCost = taskcost.value;
     const taskWorker = taskworkers.value;
     const taskDesc = taskdesc.value;
+    const deptID = deptid.value;
+    const alert = createalert;
 
-    if (taskName == "" || taskCost == "" || taskWorker == "" || taskDesc == "") {
+    if (taskName == "" || taskCost == "" || taskWorker == "" || taskDesc == "" || deptID == "") {
         console.log("needs input");
+        alert.setAttribute("class", "alert alert-danger");
+        alert.innerHTML = "Task has not been successfully created!";
+        setTimeout(() => {
+            alert.removeAttribute("class");
+            alert.innerHTML = "";
+        }, 2000);
     }
     else {
         let data = {
             name: taskName,
             desc: taskDesc,
             estCost: taskCost,
-            estWorkers: taskWorker
+            estWorkers: taskWorker,
+            myDepartment: {"id" : deptID}
         }
         console.log(data);
         fetch("http://localhost:8080/tasks/create", {
@@ -72,6 +87,12 @@ const createTask = () => {
             .then(response => response.json())
             .then(info => {
                 console.log(info);
+                alert.setAttribute("class", "alert alert-success");
+                alert.innerHTML = "Task has been successfully created!";
+                setTimeout(() => {
+                    alert.removeAttribute("class");
+                    alert.innerHTML = "";
+                }, 2000);
             })
             .catch(err => console.error(`Stopppppp! ${err}`));
     }
@@ -80,7 +101,7 @@ const createTask = () => {
 // Read all method
 
 const readTask = () => {
-    document.getElementById("allTasks").innerHTML = "";
+    document.getElementById("taskInsert").innerHTML = "";
     fetch("http://localhost:8080/tasks/readAll")
         .then((response) => {
             // check that the response is OK (i.e. 200)
@@ -103,6 +124,42 @@ const readTask = () => {
         })
 }
 
+// READ ONE
+
+const readOneTask = () => {
+    document.getElementById("taskInsert").innerHTML = "";
+
+    const id = readid.value;
+
+    fetch(`http://localhost:8080/tasks/readOne/${id}`)
+        .then((response) => {
+            // check that the response is OK (i.e. 200)
+            if (response.status !== 200) {
+                throw new Error("I don't have a status of 200");
+            } else {
+                console.log(response);
+                console.log(`response is OK (200)`);
+                //json-ify it (which returns a promise)
+                response.json().then((infofromserver) => {
+                    console.log(infofromserver);
+
+                    jsonConverter(infofromserver);
+
+                })
+            }
+        }).catch((err) => {
+            console.error(err);
+        })
+}
+
+// CLEAR READ 
+
+const clearDept = () => {
+    document.getElementById("taskInsert").innerHTML = "";
+    console.log("Cleared");
+
+}
+
 const updateTask = () => {
 
     const taskID = updatetaskid.value;
@@ -110,9 +167,16 @@ const updateTask = () => {
     const taskCost = updatetaskcost.value;
     const taskWorker = updatetaskworkers.value;
     const taskDesc = updatetaskdesc.value;
+    const alert = updatealert;
 
     if (taskID == "" || taskName == "" || taskCost == "" || taskWorker == "" || taskDesc == "") {
         console.log("needs input");
+        alert.setAttribute("class", "alert alert-danger");
+        alert.innerHTML = "Task has not been successfully updated!";
+        setTimeout(() => {
+            alert.removeAttribute("class");
+            alert.innerHTML = "";
+        }, 2000);
     }
     else {
         let data = {
@@ -130,6 +194,12 @@ const updateTask = () => {
             .then(response => response.json())
             .then(info => {
                 console.log(info);
+                alert.setAttribute("class", "alert alert-success");
+                alert.innerHTML = "Task has been successfully updated!";
+                setTimeout(() => {
+                    alert.removeAttribute("class");
+                    alert.innerHTML = "";
+                }, 2000);
             })
             .catch(err => console.error(`Stopppppp! ${err}`));
 
@@ -141,6 +211,7 @@ const updateTask = () => {
 const deleteTask = () => {
 
         const taskID = deletetaskid.value;
+        const alert = deletealert;
 
         fetch(`http://localhost:8080/tasks/delete/${taskID}`, {
             
@@ -154,7 +225,16 @@ const deleteTask = () => {
                     console.log(response);
                     console.log(`Task has been deleted`);
                 }
-            }).catch((err) => {
+            }).then(info => {
+                console.log(info);
+                alert.setAttribute("class", "alert alert-danger");
+                alert.innerHTML = "Department has been successfully deleted!";
+                setTimeout(() => {
+                    alert.removeAttribute("class");
+                    alert.innerHTML = "";
+                }, 2000); })
+
+            .catch((err) => {
                 console.error(err);
             })
     }
