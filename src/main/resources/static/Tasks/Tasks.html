@@ -94,7 +94,7 @@
     <!-- BUTTONS ABOVE -- MODALS BELOW -->
 
     <!-- CREATE MODAL -->
-    <div class="modal fade" id="createMethod" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    <div class="modal" id="createMethod" aria-labelledby="exampleModalLabel" aria-hidden="true"
         data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -129,7 +129,7 @@
                         </div>
                     </form>
                     <div class="modal-footer">
-                        <button class="btn btn-success" type="button" onclick="createTask()">Create Task</button>
+                        <button class="btn btn-success" type="button" onclick="createTask()" data-dismiss="modal">Create Task</button>
                     </div>
 
                 </div>
@@ -139,7 +139,7 @@
 
     <!-- Read Modal -->
 
-    <div class="modal fade" data-bs-backdrop="static" id="readMethod" aria-labelledby="exampleModalLabel"
+    <div class="modal" data-bs-backdrop="static" id="readMethod" aria-labelledby="exampleModalLabel"
         aria-hidden="true" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
