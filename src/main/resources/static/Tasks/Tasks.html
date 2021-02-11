@@ -116,6 +116,7 @@
                                 <input type="text" class="form-control" id="name" placeholder="Task Name" required>
                             </div>
                             <div class="input-group">
+                                <span class="input-group-text">£</span>
                                 <input type="number" class="form-control" id="price" placeholder="Cost" step=".01"
                                     required>
                             </div>
@@ -133,6 +134,7 @@
                             <textarea type="text" class="form-control" id="desc" rows="3" required></textarea>
                         </div>
                     </form>
+                </div>
                     <div class="modal-footer">
                         <div class="alert" id="createonsuccess"></div>
                         <button class="btn btn-success" type="button" onclick="createTask()">Create Task</button>
@@ -208,6 +210,7 @@
                             <textarea type="text" class="form-control" id="updatedesc" rows="3" required></textarea>
                         </div>
                     </form>
+                </div>
                     <div class="modal-footer">
                         <div class="alert" id="updateonsuccess"></div>
                         <button class="btn btn-success" type="button" onclick="updateTask()">Create Task</button>
@@ -236,6 +239,7 @@
                         <input type="text" class="form-control" id="deleteid" placeholder="Task ID" required>
                     </div>
                 </form>
+            </div>
                 <div class="modal-footer">
                     <div class="alert" id="deleteonsuccess"></div>
                     <button class="btn btn-danger" type="button" onclick="deleteTask()">Delete Task</button>
