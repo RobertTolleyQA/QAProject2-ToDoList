@@ -63,13 +63,18 @@
         </div>
         <br />
         <!-- READ BUTTON -->
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#readMethod">
-                    Read
-                </button>
-            </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" onclick="readTask()">
+                Read
+            </button>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#readOneMethod"">
+                Read One
+            </button>
+            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" onclick="clearDept()">
+                Clear
+            </button>
         </div>
+        <p id="taskInsert"></p>
         <br />
         <!-- UPDATE BUTTON -->
         <div class="row">
@@ -94,7 +99,7 @@
     <!-- BUTTONS ABOVE -- MODALS BELOW -->
 
     <!-- CREATE MODAL -->
-    <div class="modal" id="createMethod" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    <div class="modal fade" id="createMethod" aria-labelledby="exampleModalLabel" aria-hidden="true"
         data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -129,7 +134,7 @@
                         </div>
                     </form>
                     <div class="modal-footer">
-                        <button class="btn btn-success" type="button" onclick="createTask()" data-dismiss="modal">Create Task</button>
+                        <button class="btn btn-success" type="button" onclick="createTask()">Create Task</button>
                     </div>
 
                 </div>
@@ -137,27 +142,32 @@
         </div>
     </div>
 
-    <!-- Read Modal -->
+    <!-- READ ONE MODAL -->
 
-    <div class="modal" data-bs-backdrop="static" id="readMethod" aria-labelledby="exampleModalLabel"
-        aria-hidden="true" data-keyboard="false" data-backdrop="static">
+
+    <div class="modal fade" id="readOneMethod" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title">Here are all the tasks:</h2>
-                    <button onclick="clearRead()" type="button" data-dismiss="modal" class="btn btn-danger">
+                    <h2 class="modal-title">Show A Task</h2>
+                    <button type="button" class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <p id="allTasks">Press read me for all tasks...</p>
-
-
+                    <form class="input-group">
+                        <div class="d-grid gap-8 d-md-block">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="readoneid" placeholder="Task ID"
+                                    required>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="readTask();">READ ALL</button>
+                    <button class="btn btn-success" type="button" onclick="readOneTask()"
+                        data-dismiss="modal">Show</button>
                 </div>
             </div>
         </div>

@@ -1,13 +1,15 @@
 'use strict'
 
 // CREATE SELECTORS
-const listAll = document.querySelector("#allTasks");
+const listAll = document.querySelector("#taskInsert");
 const taskid = document.querySelector("#id");
 const taskname = document.querySelector("#name");
 const taskcost = document.querySelector("#price");
 const taskworkers = document.querySelector("#workers");
 const taskdesc = document.querySelector("#desc");
 const deptid = document.querySelector("#deptid");
+// READ SELECTORS
+const readid = document.querySelector("#readoneid");
 // UPDATE SELECTORS
 const updatetaskid = document.querySelector("#updateid");
 const updatetaskname = document.querySelector("#updatename");
@@ -83,7 +85,7 @@ const createTask = () => {
 // Read all method
 
 const readTask = () => {
-    document.getElementById("allTasks").innerHTML = "";
+    document.getElementById("taskInsert").innerHTML = "";
     fetch("http://localhost:8080/tasks/readAll")
         .then((response) => {
             // check that the response is OK (i.e. 200)
@@ -104,6 +106,42 @@ const readTask = () => {
         }).catch((err) => {
             console.error(err);
         })
+}
+
+// READ ONE
+
+const readOneTask = () => {
+    document.getElementById("taskInsert").innerHTML = "";
+
+    const id = readid.value;
+
+    fetch(`http://localhost:8080/tasks/readOne/${id}`)
+        .then((response) => {
+            // check that the response is OK (i.e. 200)
+            if (response.status !== 200) {
+                throw new Error("I don't have a status of 200");
+            } else {
+                console.log(response);
+                console.log(`response is OK (200)`);
+                //json-ify it (which returns a promise)
+                response.json().then((infofromserver) => {
+                    console.log(infofromserver);
+
+                    jsonConverter(infofromserver);
+
+                })
+            }
+        }).catch((err) => {
+            console.error(err);
+        })
+}
+
+// CLEAR READ 
+
+const clearDept = () => {
+    document.getElementById("taskInsert").innerHTML = "";
+    console.log("Cleared");
+
 }
 
 const updateTask = () => {
