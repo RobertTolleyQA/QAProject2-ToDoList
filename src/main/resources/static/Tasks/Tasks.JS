@@ -8,6 +8,7 @@ const taskcost = document.querySelector("#price");
 const taskworkers = document.querySelector("#workers");
 const taskdesc = document.querySelector("#desc");
 const deptid = document.querySelector("#deptid");
+const createalert = document.querySelector("#createonsuccess");
 // READ SELECTORS
 const readid = document.querySelector("#readoneid");
 // UPDATE SELECTORS
@@ -16,8 +17,10 @@ const updatetaskname = document.querySelector("#updatename");
 const updatetaskcost = document.querySelector("#updateprice");
 const updatetaskworkers = document.querySelector("#updateworkers");
 const updatetaskdesc = document.querySelector("#updatedesc")
+const updatealert = document.querySelector("#updateonsuccess");
 // DELETE SELECTORS
 const deletetaskid = document.querySelector("#deleteid");
+const deletealert = document.querySelector("#deleteonsuccess");
 
 // Task JSON to string
 
@@ -56,9 +59,16 @@ const createTask = () => {
     const taskWorker = taskworkers.value;
     const taskDesc = taskdesc.value;
     const deptID = deptid.value;
+    const alert = createalert;
 
     if (taskName == "" || taskCost == "" || taskWorker == "" || taskDesc == "" || deptID == "") {
         console.log("needs input");
+        alert.setAttribute("class", "alert alert-danger");
+        alert.innerHTML = "Task has not been successfully created!";
+        setTimeout(() => {
+            alert.removeAttribute("class");
+            alert.innerHTML = "";
+        }, 2000);
     }
     else {
         let data = {
@@ -77,6 +87,12 @@ const createTask = () => {
             .then(response => response.json())
             .then(info => {
                 console.log(info);
+                alert.setAttribute("class", "alert alert-success");
+                alert.innerHTML = "Task has been successfully created!";
+                setTimeout(() => {
+                    alert.removeAttribute("class");
+                    alert.innerHTML = "";
+                }, 2000);
             })
             .catch(err => console.error(`Stopppppp! ${err}`));
     }
@@ -151,9 +167,16 @@ const updateTask = () => {
     const taskCost = updatetaskcost.value;
     const taskWorker = updatetaskworkers.value;
     const taskDesc = updatetaskdesc.value;
+    const alert = updatealert;
 
     if (taskID == "" || taskName == "" || taskCost == "" || taskWorker == "" || taskDesc == "") {
         console.log("needs input");
+        alert.setAttribute("class", "alert alert-danger");
+        alert.innerHTML = "Task has not been successfully updated!";
+        setTimeout(() => {
+            alert.removeAttribute("class");
+            alert.innerHTML = "";
+        }, 2000);
     }
     else {
         let data = {
@@ -171,6 +194,12 @@ const updateTask = () => {
             .then(response => response.json())
             .then(info => {
                 console.log(info);
+                alert.setAttribute("class", "alert alert-success");
+                alert.innerHTML = "Task has been successfully updated!";
+                setTimeout(() => {
+                    alert.removeAttribute("class");
+                    alert.innerHTML = "";
+                }, 2000);
             })
             .catch(err => console.error(`Stopppppp! ${err}`));
 
@@ -182,6 +211,7 @@ const updateTask = () => {
 const deleteTask = () => {
 
         const taskID = deletetaskid.value;
+        const alert = deletealert;
 
         fetch(`http://localhost:8080/tasks/delete/${taskID}`, {
             
@@ -195,7 +225,16 @@ const deleteTask = () => {
                     console.log(response);
                     console.log(`Task has been deleted`);
                 }
-            }).catch((err) => {
+            }).then(info => {
+                console.log(info);
+                alert.setAttribute("class", "alert alert-danger");
+                alert.innerHTML = "Department has been successfully deleted!";
+                setTimeout(() => {
+                    alert.removeAttribute("class");
+                    alert.innerHTML = "";
+                }, 2000); })
+
+            .catch((err) => {
                 console.error(err);
             })
     }
