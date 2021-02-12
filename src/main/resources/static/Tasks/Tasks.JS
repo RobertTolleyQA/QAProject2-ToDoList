@@ -24,9 +24,13 @@ const deletealert = document.querySelector("#deleteonsuccess");
 
 // Task JSON to string
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
 const jsonConverter = (tasks) => {
     let id = tasks.id;
-    let name = tasks.name;
+    let name = capitalizeFirstLetter(tasks.name);
     let desc = tasks.desc;
     let cost = tasks.estCost;
     let workers = tasks.estWorkers;

@@ -11,7 +11,11 @@
 </head>
 
 <body>
+
+
     <!-- NAV BAR BELOW -->
+
+
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
         <a class="navbar-brand" href="#">TDL Project</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#content"
@@ -33,58 +37,68 @@
             </ul>
         </div>
     </nav>
+
+
     <!-- NAV BAR ABOVE -- BUTTONS BELOW  -->
+
+    <!-- HEADER -->
     <div class="card">
         <div class="card-header">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md">
-                <h1 class="text-center display-2">Department To Do List</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md">
+                        <h1 class="text-center display-2">Department To Do List</h1>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-        <!-- CREATE BUTTON -->
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-primary btn-lg btn-outline-dark" data-toggle="modal" data-target="#createMethod">
-                    Create
+            <!-- CREATE BUTTON -->
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-primary btn-lg btn-outline-dark" data-toggle="modal"
+                        data-target="#createMethod">
+                        Create
+                    </button>
+                </div>
+            </div>
+            <br />
+            <!-- READ BUTTON -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-lg btn-outline-dark" data-toggle="modal"
+                    onclick="readDept()">
+                    Read
                 </button>
-            </div>
-        </div>
-        <br />
-        <!-- READ BUTTON -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary btn-lg btn-outline-dark" data-toggle="modal" onclick="readDept()">
-                Read
-            </button>
-            <button type="button" class="btn btn-info btn-lg btn-outline-dark" data-toggle="modal" data-target="#readOneMethod"">
+                <button type="button" class="btn btn-info btn-lg btn-outline-dark" data-toggle="modal"
+                    data-target="#readOneMethod"">
                 Read One
             </button>
-            <button type="button" class="btn btn-danger btn-lg btn-outline-dark" data-toggle="modal" onclick="clearDept()">
-                Clear
-            </button>
-        </div>
-        <p id="deptInsert"></p>
-        <br />
-        <!-- UPDATE BUTTON -->
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-primary btn-lg btn-outline-dark" data-toggle="modal" data-target="#updateMethod">
-                    Update
+            <button type=" button" class="btn btn-danger btn-lg btn-outline-dark" data-toggle="modal"
+                    onclick="clearDept()">
+                    Clear
                 </button>
             </div>
-        </div>
-        <br />
-        <!-- DELETE BUTTON -->
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-primary btn-lg btn-outline-dark" data-toggle="modal" data-target="#deleteMethod">
-                    Delete
-                </button>
+            <p id="deptInsert"></p>
+            <br />
+            <!-- UPDATE BUTTON -->
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-primary btn-lg btn-outline-dark" data-toggle="modal"
+                        data-target="#updateMethod">
+                        Update
+                    </button>
+                </div>
+            </div>
+            <br />
+            <!-- DELETE BUTTON -->
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-primary btn-lg btn-outline-dark" data-toggle="modal"
+                        data-target="#deleteMethod">
+                        Delete
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- BUTTONS ABOVE -- MODALS BELOW -->
@@ -165,7 +179,8 @@
                     <form class="input-group">
                         <div class="d-grid gap-8 d-md-block">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="updateid" placeholder="Department ID" required>
+                                <input type="text" class="form-control" id="updateid" placeholder="Department ID"
+                                    required>
                             </div>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="updatename" placeholder="Name" required>
@@ -209,7 +224,6 @@
         </div>
     </div>
     </div>
-
 
 
     <!-- Scripts here -->
