@@ -24,15 +24,21 @@ const deletealert = document.querySelector("#deleteonsuccess");
 
 // Task JSON to string
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
 const jsonConverter = (tasks) => {
     let id = tasks.id;
-    let name = tasks.name;
+    let name = capitalizeFirstLetter(tasks.name);
     let desc = tasks.desc;
     let cost = tasks.estCost;
     let workers = tasks.estWorkers;
 
-    let finalString = `ID: ${id} Tasks Title: ${name} Estimated Cost: £${cost} Estimated Workers: ${workers} Description: ${desc}`
-    printNameToScreen(finalString);
+    let finalHeader = `ID: ${id} Task : ${name}`;
+    let finalString = `Estimated Cost: £${cost} Estimated Workers: ${workers} Description: ${desc}`;
+    printNameToScreen(finalHeader, 0);
+    printNameToScreen(finalString, 1);
 
 }
 
@@ -45,11 +51,19 @@ const clearRead = () => {
 
 // Create <P> & add text
 
-const printNameToScreen = (tasks) => {
-    let task = document.createElement("div"); // <p> </p>
-    let text = document.createTextNode(`${tasks}`); // username
-    task.appendChild(text); // <p> username </p>
-    listAll.appendChild(task);
+const printNameToScreen = (tasks, size) => {
+    if (size == 0) {
+        let task = document.createElement(`h6`); // <p> </p>
+        let text = document.createTextNode(`${tasks}`); // username
+        task.appendChild(text); // <p> username </p>
+        listAll.appendChild(task);
+    }
+    else {
+        let task = document.createElement("div"); // <p> </p>
+        let text = document.createTextNode(`${tasks}`); // username
+        task.appendChild(text); // <p> username </p>
+        listAll.appendChild(task);
+    }
 }
 
 //create method
@@ -76,7 +90,7 @@ const createTask = () => {
             desc: taskDesc,
             estCost: taskCost,
             estWorkers: taskWorker,
-            myDepartment: {"id" : deptID}
+            myDepartment: { "id": deptID }
         }
         console.log(data);
         fetch("http://localhost:8080/tasks/create", {
@@ -210,32 +224,34 @@ const updateTask = () => {
 
 const deleteTask = () => {
 
-        const taskID = deletetaskid.value;
-        const alert = deletealert;
+    const taskID = deletetaskid.value;
+    const alert = deletealert;
 
-        fetch(`http://localhost:8080/tasks/delete/${taskID}`, {
-            
-                method: "DELETE" })
-        
-            .then((response) => {
-                // check that the response is OK (i.e. 200)
-                if (response.status !== 204) {
-                    throw new Error("I don't have a status of 204");
-                } else {
-                    console.log(response);
-                    console.log(`Task has been deleted`);
-                }
-            }).then(info => {
-                console.log(info);
-                alert.setAttribute("class", "alert alert-danger");
-                alert.innerHTML = "Department has been successfully deleted!";
-                setTimeout(() => {
-                    alert.removeAttribute("class");
-                    alert.innerHTML = "";
-                }, 2000); })
+    fetch(`http://localhost:8080/tasks/delete/${taskID}`, {
 
-            .catch((err) => {
-                console.error(err);
-            })
-    }
+        method: "DELETE"
+    })
+
+        .then((response) => {
+            // check that the response is OK (i.e. 200)
+            if (response.status !== 204) {
+                throw new Error("I don't have a status of 204");
+            } else {
+                console.log(response);
+                console.log(`Task has been deleted`);
+            }
+        }).then(info => {
+            console.log(info);
+            alert.setAttribute("class", "alert alert-danger");
+            alert.innerHTML = "Task has been successfully deleted!";
+            setTimeout(() => {
+                alert.removeAttribute("class");
+                alert.innerHTML = "";
+            }, 2000);
+        })
+
+        .catch((err) => {
+            console.error(err);
+        })
+}
 

@@ -14,11 +14,16 @@ const updatealert = document.querySelector("#updateonsuccess");
 const deletedeptid = document.querySelector("#deleteid");
 const deletealert = document.querySelector("#deleteonsuccess");
 
-// Task JSON to string
+// CAPITALIZE
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
+
+// TASK TO STRING
 const taskConverter = (tasks) => {
     let id = tasks.id;
-    let name = tasks.name;
+    let name = capitalizeFirstLetter(tasks.name);
     let desc = tasks.desc;
     let cost = tasks.estCost;
     let workers = tasks.estWorkers;
@@ -27,9 +32,11 @@ const taskConverter = (tasks) => {
     printNameToScreen(finalString, 1);
 }
 
+
+// JSON TO STRING
 const jsonConverter = (dept) => {
     let id = dept.id;
-    let name = dept.name;
+    let name = capitalizeFirstLetter(dept.name);
     let list = dept.taskList;
 
     let finalString = `ID: ${id} - ${name}`;
@@ -41,8 +48,8 @@ const jsonConverter = (dept) => {
     }
 }
 
-// Create <P> & add text
 
+// PRINT HEADER + BODY
 const printNameToScreen = (tasks, heading) => {
     if (heading == 0) {
         let task = document.createElement("h4"); // <p> </p>
@@ -58,7 +65,8 @@ const printNameToScreen = (tasks, heading) => {
     }
 }
 
-//create method
+
+    // CREATE METHOD
 const createDept = () => {
     const deptName = deptname.value;
     const alert = createalert;
@@ -96,8 +104,9 @@ const createDept = () => {
     }
 }
 
-// Read all method
 
+
+    // READ ALL METHOD
 const readDept = () => {
     document.getElementById("deptInsert").innerHTML = "";
     fetch("http://localhost:8080/dept/readAll")
@@ -122,8 +131,9 @@ const readDept = () => {
         })
 }
 
-// READ ONE
 
+
+    // READ ONE METHOD
 const readOneDept = () => {
     document.getElementById("deptInsert").innerHTML = "";
 
@@ -150,14 +160,17 @@ const readOneDept = () => {
         })
 }
 
-// CLEAR METHOD
 
+
+    // CLEAR METHOD
 const clearDept = () => {
     document.getElementById("deptInsert").innerHTML = "";
     console.log("Cleared");
 
 }
 
+
+    // UPDATE METHOD
 const updateDept = () => {
 
     const deptID = updatedeptid.value;
@@ -200,6 +213,8 @@ const updateDept = () => {
 
 }
 
+
+    // DELETE METHOD
 const deleteDept = () => {
 
     const deptID = deletedeptid.value;
