@@ -239,7 +239,7 @@ const deleteTask = () => {
         }).then(info => {
             console.log(info);
             alert.setAttribute("class", "alert alert-danger");
-            alert.innerHTML = "Department has been successfully deleted!";
+            alert.innerHTML = "Task has been successfully deleted!";
             setTimeout(() => {
                 alert.removeAttribute("class");
                 alert.innerHTML = "";
