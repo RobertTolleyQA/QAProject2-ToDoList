@@ -31,8 +31,8 @@ public class DeptTestHtml {
 
 	@BeforeAll
 	public static void beforeAll() {
-		report = new ExtentReports("target/reports/TDLSiteReportDepartment.html", true); // the true overwrites any report in
-																					// there
+		report = new ExtentReports("target/reports/TDLSiteReportDepartment.html", true); // the true overwrites any report in there
+																					
 
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chrome/chromedriver.exe");
 		driver = new ChromeDriver(chromeCfg());

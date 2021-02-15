@@ -16,13 +16,6 @@ public class TaskDTO {
 	
 	private String desc;
 	
-//	Date date = new Date();
-//	private String currentDate = date.toString();
-	
-//	public String getDate() {
-//		return currentDate;
-//	}
-	
 	private Double estCost;
 	
 	private Integer estWorkers;

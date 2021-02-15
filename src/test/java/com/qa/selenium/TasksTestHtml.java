@@ -1,7 +1,5 @@
 package com.qa.selenium;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,8 +31,8 @@ public class TasksTestHtml {
 
 	@BeforeAll
 	public static void beforeAll() {
-		report = new ExtentReports("target/reports/TDLSiteReportTasks.html", true); // the true overwrites any report in
-																					// there
+		report = new ExtentReports("target/reports/TDLSiteReportTasks.html", true); // the true overwrites any report in there
+																				
 
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chrome/chromedriver.exe");
 		driver = new ChromeDriver(chromeCfg());

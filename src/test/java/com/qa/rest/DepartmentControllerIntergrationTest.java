@@ -1,8 +1,5 @@
 package com.qa.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +19,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.persistence.domain.DepartmentDomain;
-import com.qa.persistence.domain.TaskDomain;
+
 import com.qa.persistence.dtos.DepartmentDTO;
-import com.qa.persistence.dtos.TaskDTO;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -45,27 +41,6 @@ public class DepartmentControllerIntergrationTest {
 	}
 	
 	private final Long ID = 3L;
-
-//	READ ALL
-
-//	@Test
-//	public void readAll() throws Exception {
-//		DepartmentDTO exRes1 = new DepartmentDTO(1L, "Front-End", null);
-//		DepartmentDTO exRes2 = new DepartmentDTO(2L, "Back-End", null);
-//		DepartmentDTO exRes3 = new DepartmentDTO(3L, "Managerial", null);
-//		List<DepartmentDTO> expectedList = new ArrayList<>();
-//		expectedList.add(exRes1);
-//		expectedList.add(exRes2);
-//		expectedList.add(exRes3);
-//
-//		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.GET,
-//				"http://localhost:8080/dept/readAll");
-//
-//		ResultMatcher matchStatus = MockMvcResultMatchers.status().isOk();
-//		ResultMatcher matchContent = MockMvcResultMatchers.content().json(jsonifier.writeValueAsString(expectedList));
-//
-//		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
-//	}
 	
 //	CREATE
 	

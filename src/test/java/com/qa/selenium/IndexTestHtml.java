@@ -1,7 +1,5 @@
 package com.qa.selenium;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.HashMap;
 import java.util.Map;
 

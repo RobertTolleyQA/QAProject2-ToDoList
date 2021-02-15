@@ -76,7 +76,6 @@ public class TaskServicesUnitTest {
 	@Test
 	public void readOne() {
 		TaskDomain testTask = new TaskDomain(1L, "run", "running", 1.1, 2, null);
-		TaskDTO testDTO = this.MockMapper.map(testTask, TaskDTO.class);
 
 		Mockito.when(this.mockRepo.findById(testTask.getId())).thenReturn(Optional.of(testTask));
 
