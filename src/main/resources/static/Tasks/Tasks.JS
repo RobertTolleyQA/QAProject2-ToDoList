@@ -28,6 +28,8 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+// Converts from json to a string
+
 const jsonConverter = (tasks) => {
     let id = tasks.id;
     let name = capitalizeFirstLetter(tasks.name);
@@ -174,6 +176,9 @@ const clearDept = () => {
 
 }
 
+// UPDATE
+
+
 const updateTask = () => {
 
     const taskID = updatetaskid.value;
@@ -221,6 +226,8 @@ const updateTask = () => {
     }
 
 }
+
+// DELETE
 
 const deleteTask = () => {
 

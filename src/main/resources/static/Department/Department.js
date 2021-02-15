@@ -15,12 +15,16 @@ const deletedeptid = document.querySelector("#deleteid");
 const deletealert = document.querySelector("#deleteonsuccess");
 
 // CAPITALIZE
+
+
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 
 // TASK TO STRING
+
+
 const taskConverter = (tasks) => {
     let id = tasks.id;
     let name = capitalizeFirstLetter(tasks.name);
@@ -34,6 +38,8 @@ const taskConverter = (tasks) => {
 
 
 // JSON TO STRING
+
+
 const jsonConverter = (dept) => {
     let id = dept.id;
     let name = capitalizeFirstLetter(dept.name);
@@ -50,6 +56,8 @@ const jsonConverter = (dept) => {
 
 
 // PRINT HEADER + BODY
+
+
 const printNameToScreen = (tasks, heading) => {
     if (heading == 0) {
         let task = document.createElement("h4"); // <p> </p>
@@ -67,6 +75,8 @@ const printNameToScreen = (tasks, heading) => {
 
 
     // CREATE METHOD
+
+
 const createDept = () => {
     const deptName = deptname.value;
     const alert = createalert;
@@ -107,6 +117,8 @@ const createDept = () => {
 
 
     // READ ALL METHOD
+
+
 const readDept = () => {
     document.getElementById("deptInsert").innerHTML = "";
     fetch("http://localhost:8080/dept/readAll")
@@ -134,6 +146,8 @@ const readDept = () => {
 
 
     // READ ONE METHOD
+
+
 const readOneDept = () => {
     document.getElementById("deptInsert").innerHTML = "";
 
@@ -163,6 +177,8 @@ const readOneDept = () => {
 
 
     // CLEAR METHOD
+
+
 const clearDept = () => {
     document.getElementById("deptInsert").innerHTML = "";
     console.log("Cleared");
@@ -171,6 +187,8 @@ const clearDept = () => {
 
 
     // UPDATE METHOD
+
+
 const updateDept = () => {
 
     const deptID = updatedeptid.value;
@@ -215,6 +233,8 @@ const updateDept = () => {
 
 
     // DELETE METHOD
+
+
 const deleteDept = () => {
 
     const deptID = deletedeptid.value;
