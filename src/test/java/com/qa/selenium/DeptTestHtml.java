@@ -1,7 +1,5 @@
 package com.qa.selenium;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,18 +20,18 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class TasksTestHtml {
-
+public class DeptTestHtml {
+	
 	private static RemoteWebDriver driver;
 	private static WebElement targ;
-	private final String URL = "http://localhost:8080/Tasks/Tasks.html";
+	private final String URL = "http://localhost:8080/Department/Department.html";
 	private static ExtentReports report;
 	private static ExtentTest test;
 	WebDriverWait wait = new WebDriverWait(driver, 30);
 
 	@BeforeAll
 	public static void beforeAll() {
-		report = new ExtentReports("target/reports/TDLSiteReportTasks.html", true); // the true overwrites any report in
+		report = new ExtentReports("target/reports/TDLSiteReportDepartment.html", true); // the true overwrites any report in
 																					// there
 
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chrome/chromedriver.exe");
@@ -76,11 +74,11 @@ public class TasksTestHtml {
 
 		return cOptions;
 	}
-
+	
 	@Test
-	public void homeFromTask() {
+	public void homeFromDept() {
 
-		test = report.startTest("task nav bar test - home");
+		test = report.startTest("home nav bar test");
 
 		driver.get(URL);
 
@@ -96,10 +94,10 @@ public class TasksTestHtml {
 			test.log(LogStatus.FAIL, "link not working");
 		}
 	}
-
+	
 	@Test
-	public void tasksFromTask() {
-		test = report.startTest("task nav bar test - tasks");
+	public void tasksFromDept() {
+		test = report.startTest("task nav bar test");
 
 		driver.get(URL);
 
@@ -117,8 +115,8 @@ public class TasksTestHtml {
 	}
 
 	@Test
-	public void departmentFromTask() {
-		test = report.startTest("task nav bar test - department");
+	public void departmentFromDept() {
+		test = report.startTest("dept nav bar test");
 
 		driver.get(URL);
 
@@ -136,15 +134,15 @@ public class TasksTestHtml {
 	}
 
 	@Test
-	public void failedCreateTask() {
+	public void failedCreateDept() {
 
-		test = report.startTest("Incorrect create task - tasks");
+		test = report.startTest("Incorrect create task ");
 		driver.get(URL);
 
 		targ = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/button"));
 		targ.click();
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("name")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("createname")));
 
 		targ = driver.findElement(By.xpath("//*[@id=\"createMethod\"]/div/div/div[3]/button"));
 		targ.click();
@@ -153,7 +151,7 @@ public class TasksTestHtml {
 
 		targ = driver.findElement(By.className("alert-danger"));
 		String result = targ.getText();
-		String expected = "Task has not been successfully created!";
+		String expected = "Department has not been successfully created!";
 
 		if (expected.equals(result)) {
 			test.log(LogStatus.PASS, "Working create alert + function");
@@ -164,30 +162,18 @@ public class TasksTestHtml {
 	}
 
 	@Test
-	public void createTaskSuccess() throws InterruptedException {
+	public void createDeptSuccess() throws InterruptedException {
 
-		test = report.startTest("Correct create task - tasks");
+		test = report.startTest("Correct create task ");
 		driver.get(URL);
 
 		targ = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/button"));
 		targ.click();
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("name")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("createname")));
 
-		targ = driver.findElement(By.id("name"));
+		targ = driver.findElement(By.id("createname"));
 		targ.sendKeys("testing");
-
-		targ = driver.findElement(By.id("price"));
-		targ.sendKeys("12.55");
-
-		targ = driver.findElement(By.id("workers"));
-		targ.sendKeys("2");
-
-		targ = driver.findElement(By.id("deptid"));
-		targ.sendKeys("1");
-
-		targ = driver.findElement(By.id("desc"));
-		targ.sendKeys("just some testing");
 
 		targ = driver.findElement(By.xpath("//*[@id=\"createMethod\"]/div/div/div[3]/button"));
 		targ.click();
@@ -196,7 +182,7 @@ public class TasksTestHtml {
 
 		targ = driver.findElement(By.className("alert-success"));
 		String result = targ.getText();
-		String expected = "Task has been successfully created!";
+		String expected = "Department has been successfully created!";
 
 		if (expected.equals(result)) {
 			test.log(LogStatus.PASS, "Working create alert + function");
@@ -208,19 +194,17 @@ public class TasksTestHtml {
 	@Test
 	public void readAll() {
 
-		test = report.startTest("Correct read all - tasks");
+		test = report.startTest("Correct read all ");
 		driver.get(URL);
 
 		targ = driver.findElement(By.xpath("/html/body/div[1]/div/div[3]/button[1]"));
 		targ.click();
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h6")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h4")));
 
-		targ = driver.findElement(By.tagName("h6"));
+		targ = driver.findElement(By.tagName("h4"));
 		String result = targ.getText();
-		String expected = "ID: 1 Task : Java";
-
-		System.out.println(result);
+		String expected = "ID: 1 - Front-End";
 
 		if (expected.equals(result)) {
 			test.log(LogStatus.PASS, "Working read all");
@@ -232,7 +216,7 @@ public class TasksTestHtml {
 	@Test
 	public void readOne() {
 
-		test = report.startTest("Correct read one - tasks");
+		test = report.startTest("Correct read one ");
 		driver.get(URL);
 
 		targ = driver.findElement(By.xpath("/html/body/div[1]/div/div[3]/button[2]"));
@@ -246,13 +230,11 @@ public class TasksTestHtml {
 		targ = driver.findElement(By.xpath("//*[@id=\"readOneMethod\"]/div/div/div[3]/button"));
 		targ.click();
 
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h6")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("h4")));
 
-		targ = driver.findElement(By.tagName("h6"));
+		targ = driver.findElement(By.tagName("h4"));
 		String result = targ.getText();
-		String expected = "ID: 1 Task : Java";
-
-		System.out.println(result);
+		String expected = "ID: 1 - Front-End";
 
 		if (expected.equals(result)) {
 			test.log(LogStatus.PASS, "Working read one");
@@ -265,14 +247,14 @@ public class TasksTestHtml {
 	@Test
 	public void clear() {
 
-		test = report.startTest("Correct clear - tasks");
+		test = report.startTest("Correct clear ");
 		driver.get(URL);
 
 		targ = driver.findElement(By.xpath("/html/body/div[1]/div/div[3]/button[3]"));
 		targ.click();
 
 		try {
-			targ = driver.findElement(By.tagName("h6"));
+			targ = driver.findElement(By.tagName("h4"));
 		} catch (Exception e) {
 			targ = null;
 		}
@@ -287,7 +269,7 @@ public class TasksTestHtml {
 	@Test
 	public void update() {
 
-		test = report.startTest("Correct update - tasks");
+		test = report.startTest("Correct update ");
 		driver.get(URL);
 
 		targ = driver.findElement(By.xpath("/html/body/div[1]/div/div[4]/div/button"));
@@ -301,15 +283,6 @@ public class TasksTestHtml {
 		targ = driver.findElement(By.id("updatename"));
 		targ.sendKeys("testing");
 
-		targ = driver.findElement(By.id("updateprice"));
-		targ.sendKeys("5.55");
-
-		targ = driver.findElement(By.id("updateworkers"));
-		targ.sendKeys("8");
-
-		targ = driver.findElement(By.id("updatedesc"));
-		targ.sendKeys("this is testing");
-
 		targ = driver.findElement(By.xpath("//*[@id=\"updateMethod\"]/div/div/div[3]/button"));
 		targ.click();
 
@@ -317,7 +290,7 @@ public class TasksTestHtml {
 
 		targ = driver.findElement(By.className("alert-success"));
 		String result = targ.getText();
-		String expected = "Task has been successfully updated!";
+		String expected = "Department has been successfully updated!";
 
 		if (expected.equals(result)) {
 			test.log(LogStatus.PASS, "Working update alert + function");
@@ -327,9 +300,9 @@ public class TasksTestHtml {
 	}
 
 	@Test
-	public void failedUpdateTask() {
+	public void failedUpdateDept() {
 
-		test = report.startTest("Incorrect update task - tasks");
+		test = report.startTest("Incorrect update ");
 		driver.get(URL);
 
 		targ = driver.findElement(By.xpath("/html/body/div[1]/div/div[4]/div/button"));
@@ -344,7 +317,7 @@ public class TasksTestHtml {
 
 		targ = driver.findElement(By.className("alert-danger"));
 		String result = targ.getText();
-		String expected = "Task has not been successfully updated!";
+		String expected = "Department has not been successfully updated!";
 
 		if (expected.equals(result)) {
 			test.log(LogStatus.PASS, "Working update alert + function");
@@ -357,7 +330,7 @@ public class TasksTestHtml {
 	@Test
 	public void delete() {
 
-		test = report.startTest("Correct delete method - tasks");
+		test = report.startTest("Correct delete method ");
 		driver.get(URL);
 
 		targ = driver.findElement(By.xpath("/html/body/div[1]/div/div[5]/div/button"));
@@ -366,7 +339,7 @@ public class TasksTestHtml {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("deleteid")));
 
 		targ = driver.findElement(By.id("deleteid"));
-		targ.sendKeys("4");
+		targ.sendKeys("3");
 
 		targ = driver.findElement(By.xpath("//*[@id=\"deleteMethod\"]/div/div/div[3]/button"));
 		targ.click();
@@ -375,9 +348,7 @@ public class TasksTestHtml {
 
 		targ = driver.findElement(By.className("alert-danger"));
 		String result = targ.getText();
-		String expected = "Task been successfully deleted!";
-		
-		System.out.println(result);
+		String expected = "Department has been successfully deleted!";
 
 		if (expected.equals(result)) {
 			test.log(LogStatus.PASS, "Working delete alert + function");
