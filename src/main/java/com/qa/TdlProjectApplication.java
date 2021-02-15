@@ -8,6 +8,7 @@ public class TdlProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TdlProjectApplication.class, args);
+		System.out.println("Finished loading...");
 
 		
 		
