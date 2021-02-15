@@ -375,7 +375,7 @@ public class TasksTestHtml {
 
 		targ = driver.findElement(By.className("alert-danger"));
 		String result = targ.getText();
-		String expected = "Task been successfully deleted!";
+		String expected = "Task has been successfully deleted!";
 		
 		System.out.println(result);
 
