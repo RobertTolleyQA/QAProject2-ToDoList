@@ -366,7 +366,7 @@ public class TasksTestHtml {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("deleteid")));
 
 		targ = driver.findElement(By.id("deleteid"));
-		targ.sendKeys("3");
+		targ.sendKeys("4");
 
 		targ = driver.findElement(By.xpath("//*[@id=\"deleteMethod\"]/div/div/div[3]/button"));
 		targ.click();

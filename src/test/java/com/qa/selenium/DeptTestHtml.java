@@ -134,7 +134,7 @@ public class DeptTestHtml {
 	}
 
 	@Test
-	public void failedCreateTask() {
+	public void failedCreateDept() {
 
 		test = report.startTest("Incorrect create task ");
 		driver.get(URL);
@@ -162,7 +162,7 @@ public class DeptTestHtml {
 	}
 
 	@Test
-	public void createTaskSuccess() throws InterruptedException {
+	public void createDeptSuccess() throws InterruptedException {
 
 		test = report.startTest("Correct create task ");
 		driver.get(URL);
@@ -300,7 +300,7 @@ public class DeptTestHtml {
 	}
 
 	@Test
-	public void failedUpdateTask() {
+	public void failedUpdateDept() {
 
 		test = report.startTest("Incorrect update ");
 		driver.get(URL);
