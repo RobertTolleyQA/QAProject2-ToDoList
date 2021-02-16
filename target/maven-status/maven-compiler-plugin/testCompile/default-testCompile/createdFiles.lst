@@ -1,0 +1,7 @@
+com\qa\TdlProjectApplicationTests.class
+com\qa\rest\DepartmentControllerIntergrationTest.class
+com\qa\rest\TaskControllerIntergrationTest.class
+com\qa\selenium\IndexTestHtml.class
+com\qa\selenium\TasksTestHtml.class
+com\qa\selenium\DeptTestHtml.class
+com\qa\services\TaskServicesUnitTest.class
