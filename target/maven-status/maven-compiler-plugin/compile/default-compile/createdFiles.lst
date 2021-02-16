@@ -1,0 +1,12 @@
+com\qa\rest\DepartmentController.class
+com\qa\persistence\domain\DepartmentDomain.class
+com\qa\TdlProjectApplication.class
+com\qa\rest\TaskController.class
+com\qa\persistence\domain\TaskDomain.class
+com\qa\config\AppConfig.class
+com\qa\persistence\repo\DepartmentRepo.class
+com\qa\services\DepartmentServices.class
+com\qa\persistence\dtos\TaskDTO.class
+com\qa\services\TaskServices.class
+com\qa\persistence\dtos\DepartmentDTO.class
+com\qa\persistence\repo\TaskRepo.class
